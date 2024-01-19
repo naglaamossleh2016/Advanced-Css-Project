@@ -279,3 +279,12 @@ body {
   font-weight: var(--font-weight-regular);
   margin-top: 1rem;
 }
+/* skills end */
+/* Media */
+.media {
+  justify-content: center;
+  align-items: center;
+}
+.media__vedio {
+  max-width: 100%;
+}
