@@ -76,6 +76,33 @@ body {
   background-color: var(--color-background);
   color: var(--color-text);
 }
+/* Global Style */
+.section {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  align-items: start;
+  position: relative;
+}
+.section--with-bg {
+  padding: 11rem 0;
+}
+.section--with-bg::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  background-color: var(--color-grey);
+  z-index: -1;
+  justify-self: center;
+}
+
+.h2-heading {
+  font-size: var(--font-size-65);
+  font-weight: var(--font-weight-bold);
+  grid-column: 1/-1;
+  margin-bottom: 8.7rem;
+}
+
 .container {
   display: grid;
   row-gap: 11rem;
@@ -151,12 +178,7 @@ body {
   background-color: var(--color-green);
 }
 /* End toggle */
-.section {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
 
-  align-items: start;
-}
 /* bio */
 .bio {
   grid-template-columns: repeat(2, 1fr);
@@ -241,4 +263,19 @@ body {
 }
 .bio__pic {
   width: 42.7rem;
+}
+/* bio end */
+/* skills start */
+
+.skills__list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  row-gap: 5rem;
+  font-size: var(--font-size-38);
+  font-weight: var(--font-weight-semi-bold);
+}
+.list__item-experience {
+  font-size: var(--font-size-20);
+  font-weight: var(--font-weight-regular);
+  margin-top: 1rem;
 }
