@@ -15,6 +15,7 @@ html {
 }
 a {
   font: inherit;
+  color: inherit;
   display: inline-block;
 }
 button {
@@ -69,6 +70,10 @@ ul {
   --font-size-15: 1.5rem;
 
   --transition-timing: 0.3s;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 11rem;
 }
 body,
 [type="submit"] {
@@ -128,9 +133,11 @@ body,
 /* Header Start */
 .header {
   padding: 3rem 0;
-  position: relative;
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: center;
+  z-index: 1;
 }
 .header::before {
   top: 0;
@@ -140,6 +147,7 @@ body,
   width: 100vw;
   border-bottom: 0.1rem solid var(--color-input-border);
   z-index: -1;
+  background-color: var(--color-background);
 }
 .navigation__list {
   display: flex;
@@ -152,6 +160,16 @@ body,
 }
 .navigation__link:hover,
 .navigation__link:active {
+  text-decoration: underline;
+}
+.container:has(#bio:target) .navigation_bio,
+.container:has(#skills:target) .navigation_skills,
+.container:has(#media:target) .navigation_media,
+.container:has(#projects:target) .navigation_projects,
+.container:has(#clients:target) .navigation_clients,
+.container:has(#contact:target) .navigation_contact {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-blue);
   text-decoration: underline;
 }
 .toggle {
@@ -238,7 +256,8 @@ body,
   color: var(--color-white);
   padding: 0.7rem 4.7rem;
 }
-.find-out-link {
+.find-out-link:link,
+.find-out-link:visited {
   padding: 0.7rem 0;
   margin-inline-start: 1.4rem;
 }
@@ -370,9 +389,11 @@ body,
   font-size: var(--font-size-20);
   line-height: 1.9;
 }
-.contact__email {
+.contact__email:link,
+.contact__email:visited {
   font-weight: var(--font-weight-bold);
   margin: 2.5rem 0;
+  color: var(--color-black);
 }
 
 .contact__social {
@@ -403,5 +424,31 @@ body,
   padding: 1.7rem 1.8rem;
   font-size: var(--font-size-24);
   margin-top: 3.4rem;
+  cursor: pointer;
+}
+form:invalid::after {
+  content: "*";
+  font-size: var(--font-size-38);
+  color: var(--color-red);
 }
 /* End contact */
+/* Footer */
+.footer {
+  padding: 1rem 0;
+  font-size: var(--font-size-15);
+  border-top: 0.1rem solid var(--color-black);
+}
+/* End footer */
+/* Theme */
+html:has(.toggle__checkbox:checked) {
+  --color-background: var(--color-black);
+  --color-text: var(--color-white);
+  --color-box-img: var(--color-green);
+  --color-link-bg: var(--color-green);
+  --color-grey: #080808;
+  --color-input-border: var(--color-white);
+}
+html:has(.toggle__checkbox:checked) .contact__social {
+  filter: invert(1);
+}
+/* End Theme */
